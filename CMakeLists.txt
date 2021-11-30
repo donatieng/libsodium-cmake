@@ -12,6 +12,8 @@ option(SODIUM_ENABLE_BLOCKING_RANDOM "Enable this switch only if /dev/urandom is
 
 add_library(${PROJECT_NAME}
     libsodium/src/libsodium/crypto_aead/aes256gcm/aesni/aead_aes256gcm_aesni.c
+    libsodium/src/libsodium/crypto_aead/aegis128l/aead_aegis128l.c
+    libsodium/src/libsodium/crypto_aead/aegis256/aead_aegis256.c
     libsodium/src/libsodium/crypto_aead/chacha20poly1305/sodium/aead_chacha20poly1305.c
     libsodium/src/libsodium/crypto_aead/xchacha20poly1305/sodium/aead_xchacha20poly1305.c
     libsodium/src/libsodium/crypto_auth/crypto_auth.c
@@ -22,6 +24,8 @@ add_library(${PROJECT_NAME}
     libsodium/src/libsodium/crypto_box/crypto_box_easy.c
     libsodium/src/libsodium/crypto_box/crypto_box_seal.c
     libsodium/src/libsodium/crypto_box/curve25519xsalsa20poly1305/box_curve25519xsalsa20poly1305.c
+    libsodium/src/libsodium/crypto_core/ed25519/core_h2c.c
+    libsodium/src/libsodium/crypto_core/ed25519/core_h2c.h
     libsodium/src/libsodium/crypto_core/ed25519/ref10/ed25519_ref10.c
     libsodium/src/libsodium/crypto_core/ed25519/ref10/fe_25_5/base.h
     libsodium/src/libsodium/crypto_core/ed25519/ref10/fe_25_5/base2.h
@@ -47,6 +51,7 @@ add_library(${PROJECT_NAME}
     libsodium/src/libsodium/crypto_generichash/blake2b/ref/blake2b-load-avx2.h
     libsodium/src/libsodium/crypto_generichash/blake2b/ref/blake2b-load-sse2.h
     libsodium/src/libsodium/crypto_generichash/blake2b/ref/blake2b-load-sse41.h
+    libsodium/src/libsodium/crypto_generichash/blake2b/ref/blake2b-load-avx2.h
     libsodium/src/libsodium/crypto_generichash/blake2b/ref/blake2b-ref.c
     libsodium/src/libsodium/crypto_generichash/blake2b/ref/generichash_blake2b.c
     libsodium/src/libsodium/crypto_generichash/crypto_generichash.c
@@ -59,6 +64,8 @@ add_library(${PROJECT_NAME}
     libsodium/src/libsodium/crypto_kdf/crypto_kdf.c
     libsodium/src/libsodium/crypto_kx/crypto_kx.c
     libsodium/src/libsodium/crypto_onetimeauth/crypto_onetimeauth.c
+    libsodium/src/libsodium/crypto_onetimeauth/poly1305/onetimeauth_poly1305.c
+    libsodium/src/libsodium/crypto_onetimeauth/poly1305/onetimeauth_poly1305.h
     libsodium/src/libsodium/crypto_onetimeauth/poly1305/donna/poly1305_donna.c
     libsodium/src/libsodium/crypto_onetimeauth/poly1305/donna/poly1305_donna.h
     libsodium/src/libsodium/crypto_onetimeauth/poly1305/donna/poly1305_donna32.h
@@ -127,6 +134,8 @@ add_library(${PROJECT_NAME}
     libsodium/src/libsodium/crypto_stream/chacha20/dolbeau/u8.h
     libsodium/src/libsodium/crypto_stream/chacha20/ref/chacha20_ref.c
     libsodium/src/libsodium/crypto_stream/chacha20/ref/chacha20_ref.h
+    libsodium/src/libsodium/crypto_stream/chacha20/ref/chacha20_ref.h
+    libsodium/src/libsodium/crypto_stream/chacha20/ref/chacha20_ref.c
     libsodium/src/libsodium/crypto_stream/chacha20/stream_chacha20.c
     libsodium/src/libsodium/crypto_stream/chacha20/stream_chacha20.h
     libsodium/src/libsodium/crypto_stream/crypto_stream.c
@@ -172,6 +181,8 @@ add_library(${PROJECT_NAME}
     libsodium/src/libsodium/include/sodium/crypto_hash_sha512.h
     libsodium/src/libsodium/include/sodium/crypto_kdf.h
     libsodium/src/libsodium/include/sodium/crypto_kdf_blake2b.h
+    libsodium/src/libsodium/include/sodium/crypto_kdf_hkdf_sha256.h
+    libsodium/src/libsodium/include/sodium/crypto_kdf_hkdf_sha512.h
     libsodium/src/libsodium/include/sodium/crypto_kx.h
     libsodium/src/libsodium/include/sodium/crypto_onetimeauth.h
     libsodium/src/libsodium/include/sodium/crypto_onetimeauth_poly1305.h
@@ -234,6 +245,8 @@ if(NOT SODIUM_MINIMAL)
             libsodium/src/libsodium/crypto_box/curve25519xchacha20poly1305/box_seal_curve25519xchacha20poly1305.c
             libsodium/src/libsodium/crypto_core/ed25519/core_ed25519.c
             libsodium/src/libsodium/crypto_core/ed25519/core_ristretto255.c
+            libsodium/src/libsodium/crypto_kdf/hkdf/kdf_hkdf_sha256.c
+            libsodium/src/libsodium/crypto_kdf/hkdf/kdf_hkdf_sha512.c
             libsodium/src/libsodium/crypto_pwhash/scryptsalsa208sha256/crypto_scrypt-common.c
             libsodium/src/libsodium/crypto_pwhash/scryptsalsa208sha256/crypto_scrypt.h
             libsodium/src/libsodium/crypto_pwhash/scryptsalsa208sha256/nosse/pwhash_scryptsalsa208sha256_nosse.c
@@ -242,6 +255,7 @@ if(NOT SODIUM_MINIMAL)
             libsodium/src/libsodium/crypto_pwhash/scryptsalsa208sha256/pwhash_scryptsalsa208sha256.c
             libsodium/src/libsodium/crypto_pwhash/scryptsalsa208sha256/scrypt_platform.c
             libsodium/src/libsodium/crypto_pwhash/scryptsalsa208sha256/sse/pwhash_scryptsalsa208sha256_sse.c
+            libsodium/src/libsodium/crypto_pwhash/scryptsalsa208sha256/nosse/pwhash_scryptsalsa208sha256_nosse.c
             libsodium/src/libsodium/crypto_scalarmult/ed25519/ref10/scalarmult_ed25519_ref10.c
             libsodium/src/libsodium/crypto_scalarmult/ristretto255/ref10/scalarmult_ristretto255_ref10.c
             libsodium/src/libsodium/crypto_secretbox/xchacha20poly1305/secretbox_xchacha20poly1305.c
@@ -281,8 +295,8 @@ target_compile_definitions(${PROJECT_NAME}
 
 # Variables that need to be exported to version.h.in
 set(VERSION 1.0.18)
-set(SODIUM_LIBRARY_VERSION_MAJOR 10)
-set(SODIUM_LIBRARY_VERSION_MINOR 3)
+set(SODIUM_LIBRARY_VERSION_MAJOR 11)
+set(SODIUM_LIBRARY_VERSION_MINOR 0)
 if(SODIUM_MINIMAL)
     set(SODIUM_LIBRARY_MINIMAL_DEF "#define SODIUM_LIBRARY_MINIMAL 1")
 endif()
