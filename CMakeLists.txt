@@ -105,8 +105,6 @@ add_library(${PROJECT_NAME}
     libsodium/src/libsodium/crypto_scalarmult/curve25519/sandy2x/fe51_namespace.h
     libsodium/src/libsodium/crypto_scalarmult/curve25519/sandy2x/fe_frombytes_sandy2x.c
     libsodium/src/libsodium/crypto_scalarmult/curve25519/sandy2x/ladder.h
-    libsodium/src/libsodium/crypto_scalarmult/curve25519/sandy2x/ladder_base.h
-    libsodium/src/libsodium/crypto_scalarmult/curve25519/sandy2x/ladder_base_namespace.h
     libsodium/src/libsodium/crypto_scalarmult/curve25519/sandy2x/ladder_namespace.h
     libsodium/src/libsodium/crypto_scalarmult/curve25519/scalarmult_curve25519.c
     libsodium/src/libsodium/crypto_scalarmult/curve25519/scalarmult_curve25519.h
@@ -202,7 +200,6 @@ add_library(${PROJECT_NAME}
     libsodium/src/libsodium/include/sodium/crypto_shorthash_siphash24.h
     libsodium/src/libsodium/include/sodium/crypto_sign.h
     libsodium/src/libsodium/include/sodium/crypto_sign_ed25519.h
-    libsodium/src/libsodium/include/sodium/crypto_sign_edwards25519sha512batch.h
     libsodium/src/libsodium/include/sodium/crypto_stream.h
     libsodium/src/libsodium/include/sodium/crypto_stream_chacha20.h
     libsodium/src/libsodium/include/sodium/crypto_stream_salsa20.h
@@ -261,7 +258,6 @@ if(NOT SODIUM_MINIMAL)
             libsodium/src/libsodium/crypto_secretbox/xchacha20poly1305/secretbox_xchacha20poly1305.c
             libsodium/src/libsodium/crypto_shorthash/siphash24/ref/shorthash_siphashx24_ref.c
             libsodium/src/libsodium/crypto_shorthash/siphash24/shorthash_siphashx24.c
-            libsodium/src/libsodium/crypto_sign/ed25519/ref10/obsolete.c
             libsodium/src/libsodium/crypto_stream/salsa2012/ref/stream_salsa2012_ref.c
             libsodium/src/libsodium/crypto_stream/salsa2012/stream_salsa2012.c
             libsodium/src/libsodium/crypto_stream/salsa208/ref/stream_salsa208_ref.c

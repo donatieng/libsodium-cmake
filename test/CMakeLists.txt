@@ -244,8 +244,8 @@ make_test(test_secretbox_easy2
     ${PROJECT_SOURCE_DIR}/libsodium/test/default/secretbox_easy2.c
 )
 
-make_test(test_secretstream
-    ${PROJECT_SOURCE_DIR}/libsodium/test/default/secretstream.c
+make_test(test_secretstream_xchacha20poly1305
+    ${PROJECT_SOURCE_DIR}/libsodium/test/default/secretstream_xchacha20poly1305.c
 )
 
 make_test(test_shorthash
